@@ -3,7 +3,7 @@ import graphene
 from flask import Flask
 from flask_graphql import GraphQLView
 # local imports
-from schema import spotSchema
+from schema import schemaOA
 
 
 # Flask configs
@@ -11,9 +11,9 @@ app = Flask(__name__)
 app.debug = True
 
 # This is to enable the GraphQL GUI
-app.add_url_rule('/graphql',
-                 view_func=GraphQLView.as_view('graphql',
-                                               schema=spotSchema,
+app.add_url_rule('/oa',
+                 view_func=GraphQLView.as_view('Operational Analytics',
+                                               schema=schemaOA,
                                                graphiql=True))
 
 #app.route("/", methods=['POST'])
