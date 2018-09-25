@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 from impala.dbapi import connect
-import api.resources.configurator as config
+import resources.configurator as config
 
 
 def create_connection():
