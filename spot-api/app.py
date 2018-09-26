@@ -19,4 +19,5 @@ app.add_url_rule('/oa',
 #app.route("/", methods=['POST'])
 
 if __name__ == '__main__':
-    app.run(port=8880)
+    app.run(port=8880,
+            host='0.0.0.0')
