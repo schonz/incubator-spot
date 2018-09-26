@@ -108,20 +108,14 @@ class SecHead(object):
         return self
 
     def __next__(self):
-        if self.sechead:
+        if self.sechead is not None:
             try:
                 return self.sechead
             finally:
                 self.sechead = None
         else:
-            return self.fp.readline()
-
-
-    def readline(self):
-        if self.sechead:
-            try:
-                return self.sechead
-            finally:
-                self.sechead = None
-        else:
-            return self.fp.readline()
+            line = self.fp.readline()
+            if line is not '':
+                return self.fp.readline()
+            else:
+                raise StopIteration
