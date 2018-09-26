@@ -21,7 +21,7 @@ from io import open
 
 def configuration():
 
-    config = ConfigParser.ConfigParser()
+    config = configparser.ConfigParser()
 
     try:
         conf = open("/etc/spot.conf", "r")
@@ -29,7 +29,7 @@ def configuration():
         print("Error opening: spot.conf" + " error: " + e.errno)
         raise e
 
-    config.readfp(SecHead(conf))
+    config.read_file(SecHead(conf))
     return config
 
 
@@ -103,6 +103,19 @@ class SecHead(object):
     def __init__(self, fp):
         self.fp = fp
         self.sechead = '[conf]\n'
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        if self.sechead:
+            try:
+                return self.sechead
+            finally:
+                self.sechead = None
+        else:
+            return self.fp.readline()
+
 
     def readline(self):
         if self.sechead:
