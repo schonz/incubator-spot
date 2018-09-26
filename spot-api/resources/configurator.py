@@ -116,6 +116,6 @@ class SecHead(object):
         else:
             line = self.fp.readline()
             if line is not '':
-                return self.fp.readline()
+                return line
             else:
                 raise StopIteration
