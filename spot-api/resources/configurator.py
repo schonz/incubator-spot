@@ -107,7 +107,7 @@ class SecHead(object):
     def __iter__(self):
         return self
 
-    def next(self):
+    def __next__(self):
         if self.sechead:
             try:
                 return self.sechead
