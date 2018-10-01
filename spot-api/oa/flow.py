@@ -1,10 +1,12 @@
 import graphene
 import resources.configurator as Configuration
 import resources.impala_engine as ImpalaEngine
+import datetime
 
 
 class NetflowQueryType(graphene.ObjectType):
-    suspicious = graphene.String(name=graphene.Argument(graphene.String, default_value="sus"))
+    suspicious = graphene.List(date=graphene.Argument(graphene.String, default_value=datetime.date.today()),
+                               ip=graphene.String(graphene.String, default_value=None))
     edgeDetails = graphene.String(name=graphene.Argument(graphene.String, default_value="edge"))
 
     def resolve_suspicious(self, info, **args):
