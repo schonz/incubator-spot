@@ -13,7 +13,7 @@ class QueryOA(graphene.ObjectType):
         return 'Hello ' + args['name']
 
     def resolve_flow(self, info, **args):
-        return NetflowQueryType
+        return flowQuery.NetflowQueryType
 
 
 # package up the schema

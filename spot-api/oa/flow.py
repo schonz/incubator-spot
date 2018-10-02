@@ -11,9 +11,12 @@ class NetflowQueryType(graphene.ObjectType):
                                date=graphene.Argument(type=graphene.types.String,
                                                       default_value=datetime.date.today(),
                                                       description='A date to use as a reference for suspicious connections. Defaults to today'),
-                               ip=graphene.Argument(type=graphene.String,
+                               ip=graphene.Argument(type=graphene.types.String,
                                                     default_value=None,
-                                                    description='IP of interest'))
+                                                    description='IP of interest'),
+                               limit=graphene.Argument(type=graphene.types.Int,
+                                                       default_value=250,
+                                                       description="Number of suspicious connections to return. Default is 250"))
     edgeDetails = graphene.String(name=graphene.Argument(graphene.String, default_value="edge"))
 
     def resolve_suspicious(self, info, **args):
