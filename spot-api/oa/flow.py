@@ -1,16 +1,27 @@
 import graphene
-import resources.configurator as Configuration
-import resources.impala_engine as ImpalaEngine
 import datetime
+# Local Imports
+import resources.configurator as configuration
+import resources.impala_engine as impalaEngine
+import flow_types
 
 
 class NetflowQueryType(graphene.ObjectType):
-    suspicious = graphene.List(date=graphene.Argument(graphene.String, default_value=datetime.date.today()),
-                               ip=graphene.String(graphene.String, default_value=None))
+    suspicious = graphene.List(SuspiciousType,
+                               date=graphene.Argument(type=graphene.types.String,
+                                                      default_value=datetime.date.today(),
+                                                      description='A date to use as a reference for suspicious connections. Defaults to today'),
+                               ip=graphene.Argument(type=graphene.String,
+                                                    default_value=None,
+                                                    description='IP of interest'))
     edgeDetails = graphene.String(name=graphene.Argument(graphene.String, default_value="edge"))
 
     def resolve_suspicious(self, info, **args):
-        db = Configuration.db()
+        date = args.get("date")
+        ip = args.get("ip")
+        limit = args.get("limit")
+
+        db = configuration.db()
         sc_query = ("""
                     SELECT STRAIGHT_JOIN
                         fs.tstart,fs.srcip,fs.dstip,fs.sport,fs.dport,proto,
@@ -31,10 +42,10 @@ class NetflowQueryType(graphene.ObjectType):
         sc_filter += " ORDER BY rank  limit {0}".format(limit)
         sc_query = sc_query + sc_filter
 
-        return ImpalaEngine.execute_query_as_list(sc_query)
+        return impalaEngine.execute_query_as_list(sc_query)
 
     def resolve_edgeDetails(self, info, **args):
-        db = Configuration.db()
+        db = configuration.db()
         details_query = ("""
                 SELECT
                     tstart,srcip,dstip,sport,dport,proto,flags,
@@ -48,4 +59,4 @@ class NetflowQueryType(graphene.ObjectType):
                 """).format(db, date.year, date.month, date.day, date.hour, \
                             date.minute, src_ip, dst_ip)
 
-        return ImpalaEngine.execute_query_as_list(details_query)
+        return impalaEngine.execute_query_as_list(details_query)

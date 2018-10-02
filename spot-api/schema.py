@@ -1,6 +1,7 @@
 import graphene
 # local imports
-from oa.flow import NetflowQueryType
+import oa.flow
+from oa.flow_types import flow_types
 
 
 class QueryOA(graphene.ObjectType):
@@ -16,4 +17,5 @@ class QueryOA(graphene.ObjectType):
 
 
 # package up the schema
-schemaOA = graphene.Schema(query=QueryOA)
+schemaOA = graphene.Schema(query=QueryOA,
+                           types=flow_types)
