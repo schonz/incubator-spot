@@ -3,11 +3,11 @@ import datetime
 # Local Imports
 import resources.configurator as configuration
 import resources.impala_engine as impalaEngine
-import flow_types
+import oa.flow_types as flowTypes
 
 
 class NetflowQueryType(graphene.ObjectType):
-    suspicious = graphene.List(SuspiciousType,
+    suspicious = graphene.List(flowTypes.SuspiciousType,
                                date=graphene.Argument(type=graphene.types.String,
                                                       default_value=datetime.date.today(),
                                                       description='A date to use as a reference for suspicious connections. Defaults to today'),

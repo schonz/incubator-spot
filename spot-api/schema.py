@@ -1,13 +1,13 @@
 import graphene
 # local imports
-import oa.flow
+import oa.flow as flowQuery
 from oa.flow_types import flow_types
 
 
 class QueryOA(graphene.ObjectType):
     hello = graphene.String(name=graphene.Argument(graphene.String, default_value="stranger"))
 
-    flow = graphene.Field(NetflowQueryType)
+    flow = graphene.Field(flowQuery.NetflowQueryType)
 
     def resolve_hello(self, info, **args):
         return 'Hello ' + args['name']
