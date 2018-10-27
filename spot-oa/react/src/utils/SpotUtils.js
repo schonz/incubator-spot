@@ -15,7 +15,7 @@
 // limitations under the License.
 //
 
-import $ from 'jQuery'
+import $ from 'jquery'
 
 const Base64 = require('js-base64').Base64;
 
@@ -169,4 +169,5 @@ var SpotUtils = {
   }
 };
 
-module.exports = SpotUtils;
+//module.exports = SpotUtils;
+export { SpotUtils };

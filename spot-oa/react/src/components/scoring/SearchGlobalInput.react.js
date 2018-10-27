@@ -39,7 +39,7 @@ var SearchGlobalInput = React.createClass({
     {
       this.setState({filter: e.target.value})
     },
-    _onFilterChange: function ()
+    _onFilterChange: function (e)
     {
       console.log(e.target)
     }

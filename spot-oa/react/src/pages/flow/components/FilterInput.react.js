@@ -15,24 +15,24 @@
 // limitations under the License.
 //
 
-var React = require('react');
+import React from 'react'
 
-var EdInActions = require('../../../js/actions/EdInActions');
+var EdInActions = require('../../../actions/EdInActions');
 var SuspiciousStore = require('../stores/SuspiciousStore');
-var SpotUtils = require('../../../js/utils/SpotUtils');
+var SpotUtils = require('../../../utils/SpotUtils');
 
-var FilterInput = React.createClass({
-  getInitialState: function ()
+export default class FilterInput {
+  getInitialState()
   {
     return {filter: ''};
-  },
-  componentDidMount: function () {
+  }
+  componentDidMount() {
     SuspiciousStore.addChangeFilterListener(this._onFilterChange);
-  },
-  componentWillUnmount: function () {
+  }
+  componentWillUnmount() {
     SuspiciousStore.removeChangeFilterListener(this._onFilterChange);
-  },
-  render: function ()
+  }
+  render()
   {
     var cssClasses;
 
@@ -46,22 +46,20 @@ var FilterInput = React.createClass({
     return (
       <input id={this.props.id} type="text" className={cssClasses} placeholder="0.0.0.0" autoFocus={true} onChange={this._onChange} value={this.state.filter} onKeyUp={this._onKeyUp} />
     );
-  },
-  _onKeyUp: function (e)
+  }
+  _onKeyUp(e)
   {
     if (e.which==13) {
       EdInActions.reloadSuspicious();
     }
-  },
-  _onChange: function (e)
+  }
+  _onChange(e)
   {
     EdInActions.setFilter(e.target.value);
     this.setState({filter: e.target.value});
-  },
-  _onFilterChange: function ()
+  }
+  _onFilterChange()
   {
     this.setState({filter: SuspiciousStore.getFilter()});
   }
-});
-
-module.exports = FilterInput;
+};

@@ -15,7 +15,7 @@
 // limitations under the License.
 //
 
-import $ from 'jQuery'
+import $ from 'jquery'
 
 var React = require('react');
 var SpotUtils = require('../../utils/SpotUtils');

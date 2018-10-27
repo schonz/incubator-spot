@@ -15,10 +15,10 @@
 // limitations under the License.
 //
 
-const SpotDispatcher = require('../../../js/dispatchers/SpotDispatcher');
-const SpotConstants = require('../../../js/constants/SpotConstants');
+const SpotDispatcher = require('../../../dispatchers/SpotDispatcher');
+const SpotConstants = require('../../../constants/SpotConstants');
 
-const ObservableWithHeadersGraphQLStore = require('../../../js/stores/ObservableWithHeadersGraphQLStore');
+const ObservableWithHeadersGraphQLStore = require('../../../stores/ObservableWithHeadersGraphQLStore');
 
 const SRC_IP_VAR = 'srcIp';
 const DST_IP_VAR = 'dstIp';

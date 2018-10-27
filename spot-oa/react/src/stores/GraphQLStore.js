@@ -86,4 +86,4 @@ class GraphQLStore {
     }
 }
 
-module.exports = GraphQLStore;
+export default GraphQLStore;

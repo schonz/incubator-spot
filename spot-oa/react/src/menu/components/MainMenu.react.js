@@ -19,7 +19,9 @@ var React = require('react');
 
 var MainMenuStore = require('../stores/MainMenuStore');
 
-var MainMenu = React.createClass({
+var createReactClass = require('create-react-class');
+
+var MainMenu = createReactClass({
   getInitialState: function () {
     return {
       menu: MainMenuStore.getMenu()
@@ -70,4 +72,4 @@ var MainMenu = React.createClass({
 });
 
 
-module.exports = MainMenu;
+export default MainMenu;

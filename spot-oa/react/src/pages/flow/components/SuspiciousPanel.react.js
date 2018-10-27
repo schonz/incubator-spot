@@ -17,9 +17,9 @@
 
 var React = require('react');
 
-var GridPanelMixin = require('../../../js/components/GridPanelMixin.react');
-var SuspiciousGridMixin = require('../../../js/components/SuspiciousGridMixin.react.js');
-var SpotUtils = require('../../../js/utils/SpotUtils.js');
+var GridPanelMixin = require('../../../components/GridPanelMixin.react');
+var SuspiciousGridMixin = require('../../../components/SuspiciousGridMixin.react.js');
+var SpotUtils = require('../../../utils/SpotUtils.js');
 var SuspiciousStore = require('../stores/SuspiciousStore');
 
 var SuspiciousPanel = React.createClass({

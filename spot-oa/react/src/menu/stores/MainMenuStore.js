@@ -16,8 +16,8 @@
 //
 const EventEmitter = require('events').EventEmitter;
 
-const SpotDispatcher = require('../../../js/dispatchers/SpotDispatcher');
-const SpotConstants = require('../../../js/constants/SpotConstants');
+const SpotDispatcher = require('../../dispatchers/SpotDispatcher');
+const SpotConstants = require('../../constants/SpotConstants');
 const Menu = require('../menu');
 
 class MainMenuStore {
@@ -44,7 +44,7 @@ class MainMenuStore {
 
 }
 
-const mm = new MainMenuStore();
+export const mm = new MainMenuStore();
 
 SpotDispatcher.register(function (action) {
     switch (action.actionType) {
@@ -53,5 +53,3 @@ SpotDispatcher.register(function (action) {
             break;
     }
 });
-
-module.exports = mm;

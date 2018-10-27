@@ -15,7 +15,7 @@
 // limitations under the License.
 //
 
-import $ from 'jQuery'
+import $ from 'jquery'
 
 const React = require('react');
 const ReactDOM = require('react-dom');

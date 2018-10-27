@@ -15,9 +15,9 @@
 // limitations under the License.
 //
 
-import $ from 'jQuery'
-import chordMpr from 'd3-tip'
-import chordRdr from 'd3-tip'
+import $ from 'jquery'
+import { chordMpr } from '../lib/ChordMapper'
+import { chordRdr } from '../lib/ChordMapper'
 
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -54,8 +54,8 @@ function buildTooltip (d, input, output) {
     return tooltip;
 }
 
-const ContentLoaderMixin = require('../../../js/components/ContentLoaderMixin.react');
-const ChartMixin = require('../../../js/components/ChartMixin.react');
+const ContentLoaderMixin = require('../../../components/ContentLoaderMixin.react');
+const ChartMixin = require('../../../components/ChartMixin.react');
 
 const colorScale = d3.scale.category20();
 const numberFormat = d3.format(".3s");

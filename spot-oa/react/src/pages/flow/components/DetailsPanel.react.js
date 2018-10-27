@@ -17,9 +17,9 @@
 
 var React = require('react');
 
-var SpotConstants = require('../../../js/constants/SpotConstants');
+var SpotConstants = require('../../../constants/SpotConstants');
 
-var SpotStore = require('../../../js/stores/SpotStore');
+var SpotStore = require('../../../stores/SpotStore');
 
 var DetailsTablePanel = require('./DetailsTablePanel.react');
 var DetailsChordsPanel = require('./DetailsChordsPanel.react');

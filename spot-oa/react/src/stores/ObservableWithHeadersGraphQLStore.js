@@ -14,7 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-const ObservableGraphQLStore = require('./ObservableGraphQLStore');
+
+import ObservableGraphQLStore from './ObservableGraphQLStore'
 
 class ObservableWithHeadersGraphQLStore extends ObservableGraphQLStore {
     getData() {
@@ -28,4 +29,4 @@ class ObservableWithHeadersGraphQLStore extends ObservableGraphQLStore {
     }
 }
 
-module.exports = ObservableWithHeadersGraphQLStore
+export default ObservableWithHeadersGraphQLStore

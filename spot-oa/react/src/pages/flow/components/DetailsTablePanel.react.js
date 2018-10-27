@@ -17,7 +17,7 @@
 
 var React = require('react');
 
-var GridPanelMixin = require('../../../js/components/GridPanelMixin.react');
+var GridPanelMixin = require('../../../components/GridPanelMixin.react');
 var DetailsStore = require('../stores/DetailsStore');
 
 var DetailsTablePanel = React.createClass({

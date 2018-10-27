@@ -13,7 +13,13 @@
 //*******************************************************************
 //  CHORD MAPPER 
 //*******************************************************************
-function chordMpr (data) {
+
+// !!Disable no-unused-expressions!!
+/* eslint-disable no-unused-expressions */
+
+import _ from 'underscore'
+
+export function chordMpr (data) {
   var mpr = {}, mmap = {}, n = 0,
       matrix = [], filter, accessor;
 
@@ -62,10 +68,11 @@ function chordMpr (data) {
   }
   return mpr;
 }
+
 //*******************************************************************
 //  CHORD READER
 //*******************************************************************
-function chordRdr (matrix, mmap) {
+export function chordRdr (matrix, mmap) {
   return function (d) {
     var i,j,s,t,g,m = {};
     if (d.source) {

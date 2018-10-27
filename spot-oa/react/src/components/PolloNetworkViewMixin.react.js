@@ -15,7 +15,10 @@
 // limitations under the License.
 //
 
+import $ from 'jquery'
+
 const Base64 = require('js-base64').Base64;
+const d3 = require('d3');
 const d3Interpolate = require('d3-interpolate');
 const SpotUtils = require('../utils/SpotUtils');
 

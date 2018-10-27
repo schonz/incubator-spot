@@ -14,9 +14,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-const EventEmitter = require('events').EventEmitter;
 
-const GraphQLStore = require('./GraphQLStore');
+import GraphQLStore from './GraphQLStore'
+
+const EventEmitter = require('events').EventEmitter;
 
 const DATA_CHANGE_EVENT = 'data-change';
 
@@ -52,4 +53,4 @@ class ObervableGraphQLStore extends GraphQLStore {
     }
 }
 
-module.exports = ObervableGraphQLStore;
+export default ObervableGraphQLStore;

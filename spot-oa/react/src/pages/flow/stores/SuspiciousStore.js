@@ -15,10 +15,10 @@
 // limitations under the License.
 //
 
-const SpotDispatcher = require('../../../js/dispatchers/SpotDispatcher');
-const SpotConstants = require('../../../js/constants/SpotConstants');
+import ObservableWithHeadersGraphQLStore from '../../../stores/ObservableWithHeadersGraphQLStore'
 
-const ObservableWithHeadersGraphQLStore = require('../../../js/stores/ObservableWithHeadersGraphQLStore');
+const SpotDispatcher = require('../../../dispatchers/SpotDispatcher');
+const SpotConstants = require('../../../constants/SpotConstants');
 
 const CHANGE_FILTER_EVENT = 'change_filter';
 const HIGHLIGHT_THREAT_EVENT = 'hightlight_thread';
@@ -159,7 +159,7 @@ class SuspiciousStore extends ObservableWithHeadersGraphQLStore {
     }
 }
 
-const ss = new SuspiciousStore();
+export const ss = new SuspiciousStore();
 
 SpotDispatcher.register(function (action) {
     switch (action.actionType) {
@@ -183,5 +183,3 @@ SpotDispatcher.register(function (action) {
             break;
     }
 });
-
-module.exports = ss;

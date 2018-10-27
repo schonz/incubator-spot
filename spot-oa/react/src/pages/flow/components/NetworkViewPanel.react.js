@@ -19,13 +19,13 @@ const d3 = require('d3');
 
 const React = require('react');
 
-const ContentLoaderMixin = require('../../../js/components/ContentLoaderMixin.react');
-const ChartMixin = require('../../../js/components/ChartMixin.react');
-const PolloNetworkViewMixin = require('../../../js/components/PolloNetworkViewMixin.react');
+const ContentLoaderMixin = require('../../../components/ContentLoaderMixin.react');
+const ChartMixin = require('../../../components/ChartMixin.react');
+const PolloNetworkViewMixin = require('../../../components/PolloNetworkViewMixin.react');
 
-const SpotActions = require('../../../js/actions/SpotActions');
-const EdInActions = require('../../../js/actions/EdInActions');
-const SpotConstants = require('../../../js/constants/SpotConstants');
+const SpotActions = require('../../../actions/SpotActions');
+const EdInActions = require('../../../actions/EdInActions');
+const SpotConstants = require('../../../constants/SpotConstants');
 
 const SuspiciousStore = require('../stores/SuspiciousStore');
 

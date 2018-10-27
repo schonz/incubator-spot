@@ -15,6 +15,8 @@
 // limitations under the License.
 //
 
+import PropTypes from 'prop-types';
+
 var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -22,11 +24,13 @@ var ReactDOM = require('react-dom');
 var SpotActions = require('../actions/SpotActions');
 var SpotUtils = require('../utils/SpotUtils');
 
-var DateInput = React.createClass({
+var createReactClass = require('create-react-class');
+
+var DateInput = createReactClass({
     propTypes: {
-        name: React.PropTypes.string,
-        value: React.PropTypes.string,
-        onChange: React.PropTypes.func
+        name: PropTypes.string,
+        value: PropTypes.string,
+        onChange: PropTypes.func
     },
     getDefaultProps: function () {
         return {
@@ -62,4 +66,4 @@ var DateInput = React.createClass({
     }
 });
 
-module.exports = DateInput;
+export default DateInput;

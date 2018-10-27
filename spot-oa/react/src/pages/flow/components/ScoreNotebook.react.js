@@ -15,7 +15,7 @@
 // limitations under the License.
 //
 
-import $ from 'jQuery'
+import $ from 'jquery'
 import swal from 'sweetalert'
 
 var React = require('react');
