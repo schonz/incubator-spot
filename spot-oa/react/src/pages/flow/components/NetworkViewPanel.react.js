@@ -29,6 +29,8 @@ const SpotConstants = require('../../../constants/SpotConstants');
 
 const SuspiciousStore = require('../stores/SuspiciousStore');
 
+var createReactClass = require('create-react-class')
+
 const ID_SEPARATOR = '-';
 
 function createNodeId(id) {
@@ -112,7 +114,7 @@ function getStateFromData({data}) {
     };
 }
 
-const NetworkViewPanel = React.createClass({
+const NetworkViewPanel = createReactClass({
     mixins: [ContentLoaderMixin, ChartMixin, PolloNetworkViewMixin],
     componentDidMount() {
       SuspiciousStore.addChangeDataListener(this._onChange);
@@ -168,4 +170,4 @@ const NetworkViewPanel = React.createClass({
     }
 });
 
-module.exports = NetworkViewPanel;
+export { NetworkViewPanel };

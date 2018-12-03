@@ -19,9 +19,12 @@ var React = require('react');
 
 var SpotStore = require('../stores/SpotStore');
 
-var PanelRow = React.createClass({
+var createReactClass = require('create-react-class');
+var PropTypes = require('prop-types')
+
+var PanelRow = createReactClass({
   propTypes: {
-    maximized: React.PropTypes.bool
+    maximized: PropTypes.bool
   },
   getDefaultProps: function ()
   {
@@ -82,4 +85,4 @@ var PanelRow = React.createClass({
   }
 });
 
-module.exports = PanelRow;
+export default PanelRow;

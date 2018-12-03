@@ -15,16 +15,17 @@
 // limitations under the License.
 //
 
+import React, { Component } from 'react';
+import ObservableWithHeadersGraphQLStore from '../../../stores/ObservableWithHeadersGraphQLStore'
+
 const SpotDispatcher = require('../../../dispatchers/SpotDispatcher');
 const SpotConstants = require('../../../constants/SpotConstants');
 const SuspiciousStore = require('./SuspiciousStore');
 
-const ObservableWithHeadersGraphQLStore = require('../../../stores/ObservableWithHeadersGraphQLStore');
-
 const SCORED_ELEMENTS = 'input';
 const RESET_SCORED_ELEMENTS = 'date';
 
-class NotebookStore extends ObservableWithHeadersGraphQLStore {
+export class NotebookStore extends ObservableWithHeadersGraphQLStore {
     constructor() {
         super();
         this.selectedQuery = 'scoreQuery';
@@ -104,4 +105,4 @@ SpotDispatcher.register(function (action) {
     }
 });
 
-module.exports = ns;
+export { ns };

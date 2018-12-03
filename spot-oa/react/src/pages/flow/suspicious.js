@@ -40,18 +40,18 @@ function switchComponents () {
   SpotUtils.switchDivs(SpotConstants.DETAILS_PANEL, SpotConstants.SCORING_PANEL);
 };
 
-ReactDOM.render(
+/*ReactDOM.render(
   <MainMenu />,
   document.getElementById('main-menu')
-);
+);*/
 
-ReactDOM.render(
+/*ReactDOM.render(
   (
     <form className="form-inline">
       <div className="form-group">
         <label htmlFor="ip_filter" className="control-label">IP:</label>
         <div className="input-group input-group-xs">
-          {/*<FilterInput id="ip_filter" />*/}
+          <FilterInput id="ip_filter" />
           <div className="input-group-btn">
             <button className="btn btn-primary" type="button" id="btn_searchIp" title="Enter an IP Address and click the search button to filter the results." onClick={EdInActions.reloadSuspicious}>
               <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -73,7 +73,7 @@ ReactDOM.render(
     </form>
   ),
   document.getElementById('nav_form')
-);
+);*/
 
 // Build and Render Edge Investigation's panels
 const PanelRow = require('../../components/PanelRow.react');
@@ -84,7 +84,7 @@ const NetworkViewPanel = require('./components/NetworkViewPanel.react');
 const ScoreNotebook = require('./components/ScoreNotebook.react');
 const DetailsPanel = require('./components/DetailsPanel.react');
 
-ReactDOM.render(
+/*ReactDOM.render(
   <div id="spot-content">
     <PanelRow>
       <Panel title={SpotConstants.SUSPICIOUS_PANEL} expandable reloadable onReload={EdInActions.reloadSuspicious}>
@@ -108,7 +108,7 @@ ReactDOM.render(
     </div>
   </div>,
   document.getElementById('spot-content-wrapper')
-);
+);*/
 
 const initial_filter = SpotUtils.getCurrentFilter();
 

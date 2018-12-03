@@ -18,9 +18,11 @@
 const React = require('react');
 const $ = require('jquery');
 
+var PropTypes = require('prop-types')
+
 const ChartMixin = {
     propTypes: {
-        className: React.PropTypes.string
+        className: PropTypes.string
     },
     getDefaultProps: function() {
         return {

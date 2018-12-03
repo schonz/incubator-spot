@@ -256,4 +256,4 @@ const PolloNetworkViewMixin = {
     }
 };
 
-module.exports = PolloNetworkViewMixin;
+export default PolloNetworkViewMixin;

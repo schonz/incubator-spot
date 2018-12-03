@@ -22,7 +22,9 @@ var SuspiciousGridMixin = require('../../../components/SuspiciousGridMixin.react
 var SpotUtils = require('../../../utils/SpotUtils.js');
 var SuspiciousStore = require('../stores/SuspiciousStore');
 
-var SuspiciousPanel = React.createClass({
+var createReactClass = require('create-react-class');
+
+var SuspiciousPanel = createReactClass({
     mixins: [GridPanelMixin, SuspiciousGridMixin],
     store: SuspiciousStore,
     getDefaultProps: function () {
@@ -155,4 +157,4 @@ var SuspiciousPanel = React.createClass({
     _render_srcIpInternal_cell: false
 });
 
-module.exports = SuspiciousPanel;
+export default SuspiciousPanel;

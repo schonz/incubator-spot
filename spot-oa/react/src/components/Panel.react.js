@@ -21,16 +21,19 @@ var assign = require('object-assign');
 var SpotActions = require('../actions/SpotActions');
 var SpotStore = require('../stores/SpotStore');
 
-var Panel = React.createClass({
+var createReactClass = require('create-react-class');
+var PropTypes = require('prop-types')
+
+var Panel = createReactClass({
     propTypes: {
-        title: React.PropTypes.string.isRequired,
-        container: React.PropTypes.bool,
-        header: React.PropTypes.bool,
-        className: React.PropTypes.string,
-        reloadable: React.PropTypes.bool,
-        onReload: React.PropTypes.func,
-        expandable: React.PropTypes.bool,
-        extraButtons: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.arrayOf(React.PropTypes.node)])
+        title: PropTypes.string.isRequired,
+        container: PropTypes.bool,
+        header: PropTypes.bool,
+        className: PropTypes.string,
+        reloadable: PropTypes.bool,
+        onReload: PropTypes.func,
+        expandable: PropTypes.bool,
+        extraButtons: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.node)])
     },
     getDefaultProps: function () {
         return {
@@ -178,4 +181,4 @@ var Panel = React.createClass({
     }
 });
 
-module.exports = Panel;
+export default Panel;
