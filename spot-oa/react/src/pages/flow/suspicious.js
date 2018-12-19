@@ -16,19 +16,25 @@
 //
 
 import $ from 'jquery'
+import SpotUtils from '../../utils/SpotUtils'
+import SpotActions from '../../actions/SpotActions'
+import EdInActions from '../../actions/EdInActions'
 
 const React = require('react');
 const ReactDOM = require('react-dom');
 
 const SpotConstants = require('../../constants/SpotConstants');
-const SpotActions = require('../../actions/SpotActions');
-const EdInActions = require('../../actions/EdInActions');
-const SpotUtils = require('../../utils/SpotUtils');
 
 // Build and Render Toolbar
 const FilterInput = require('./components/FilterInput.react');
 const DateInput = require('../../components/DateInput.react');
 const MainMenu = require('../../menu/components/MainMenu.react');
+
+export default class SuspiciousPage extends React.Component {
+  render(){
+    return <h1>Suspicious Connects Here</h1>
+  }
+}
 
 function resetFilterAndReload()
 {

@@ -16,8 +16,9 @@
 //
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var RatingInput = React.createClass({
+var RatingInput = createReactClass({
   render: function() {
     var radioOptions = this.props.data.map((obj, i) =>
     <label className="radio-inline">
@@ -39,4 +40,4 @@ var RatingInput = React.createClass({
 });
 
 
-module.exports = RatingInput;
+export {RatingInput as default}

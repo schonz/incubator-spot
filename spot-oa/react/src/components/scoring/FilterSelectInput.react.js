@@ -17,10 +17,11 @@
 
 import $ from 'jquery'
 
+var createReactClass = require('create-react-class');
 var React = require('react');
 var SpotUtils = require('../../utils/SpotUtils');
 
-var FilterSelectInput = React.createClass({
+var FilterSelectInput = createReactClass({
   getInitialState: function() {
     return {filterBox: ''}
   },
@@ -44,4 +45,4 @@ var FilterSelectInput = React.createClass({
 });
 
 
-module.exports = FilterSelectInput;
+export {FilterSelectInput as default}

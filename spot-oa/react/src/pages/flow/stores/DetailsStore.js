@@ -15,10 +15,10 @@
 // limitations under the License.
 //
 
+import ObservableWithHeadersGraphQLStore from '../../../stores/ObservableWithHeadersGraphQLStore';
+
 const SpotDispatcher = require('../../../dispatchers/SpotDispatcher');
 const SpotConstants = require('../../../constants/SpotConstants');
-
-const ObservableWithHeadersGraphQLStore = require('../../../stores/ObservableWithHeadersGraphQLStore');
 
 const SRC_IP_VAR = 'srcIp';
 const DST_IP_VAR = 'dstIp';
@@ -92,7 +92,7 @@ class DetailStore extends ObservableWithHeadersGraphQLStore {
     }
 }
 
-const ds = new DetailStore();
+export const ds = new DetailStore();
 
 SpotDispatcher.register(function (action) {
   switch (action.actionType) {
@@ -110,5 +110,3 @@ SpotDispatcher.register(function (action) {
       break;
   }
 });
-
-module.exports = ds;

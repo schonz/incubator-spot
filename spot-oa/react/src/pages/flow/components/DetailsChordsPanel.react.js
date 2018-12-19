@@ -21,6 +21,8 @@ import { chordRdr } from '../lib/ChordMapper'
 
 const React = require('react');
 const ReactDOM = require('react-dom');
+var createReactClass = require('create-react-class');
+
 const d3 = require('d3');
 const ChordsDiagramStore = require('../stores/ChordsDiagramStore');
 
@@ -57,10 +59,10 @@ function buildTooltip (d, input, output) {
 const ContentLoaderMixin = require('../../../components/ContentLoaderMixin.react');
 const ChartMixin = require('../../../components/ChartMixin.react');
 
-const colorScale = d3.scale.category20();
+const colorScale = d3.schemeCategory20;
 const numberFormat = d3.format(".3s");
 
-const DetailsChordsPanel = React.createClass({
+const DetailsChordsPanel = createReactClass({
     mixins: [ContentLoaderMixin, ChartMixin],
     componentDidMount()
     {
@@ -381,4 +383,4 @@ const DetailsChordsPanel = React.createClass({
     }
 });
 
-module.exports = DetailsChordsPanel;
+export {DetailsChordsPanel as default}

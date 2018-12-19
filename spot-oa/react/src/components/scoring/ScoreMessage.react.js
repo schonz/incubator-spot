@@ -16,8 +16,9 @@
 //
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var ScoreMessage = React.createClass({
+var ScoreMessage = createReactClass({
     getInitialState : function() {
        return { showMe : false };
     },
@@ -35,4 +36,4 @@ var ScoreMessage = React.createClass({
     }
 });
 
-module.exports = ScoreMessage;
+export {ScoreMessage as default}

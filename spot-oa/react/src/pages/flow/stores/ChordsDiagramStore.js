@@ -15,10 +15,10 @@
 // limitations under the License.
 //
 
+import ObservableGraphQLStore from '../../../stores/ObservableGraphQLStore';
+
 const SpotDispatcher = require('../../../dispatchers/SpotDispatcher');
 const SpotConstants = require('../../../constants/SpotConstants');
-
-const ObservableGraphQLStore = require('../../../stores/ObservableGraphQLStore');
 
 const IP_VAR = 'ip';
 const DATE_VAR = 'date';
@@ -56,7 +56,7 @@ class ChordsDiagramStore extends ObservableGraphQLStore {
     }
 }
 
-const cds = new ChordsDiagramStore();
+export const cds = new ChordsDiagramStore();
 
 SpotDispatcher.register(function (action) {
   switch (action.actionType) {
@@ -74,5 +74,3 @@ SpotDispatcher.register(function (action) {
       break;
   }
 });
-
-module.exports = cds;

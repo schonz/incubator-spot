@@ -15,7 +15,10 @@
 // limitations under the License.
 //
 
+import PropTypes from 'prop-types';
+
 var React = require('react');
+var createReactClass = require('create-react-class');
 
 var SpotConstants = require('../../../constants/SpotConstants');
 
@@ -24,9 +27,9 @@ var SpotStore = require('../../../stores/SpotStore');
 var DetailsTablePanel = require('./DetailsTablePanel.react');
 var DetailsChordsPanel = require('./DetailsChordsPanel.react');
 
-var DetailsPanel = React.createClass({
+var DetailsPanel = createReactClass({
   propTypes: {
-    title: React.PropTypes.string.isRequired
+    title: PropTypes.string.isRequired
   },
   getInitialState: function ()
   {
@@ -65,4 +68,4 @@ var DetailsPanel = React.createClass({
   }
 });
 
-module.exports = DetailsPanel;
+export {DetailsPanel as default}

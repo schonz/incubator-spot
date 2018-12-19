@@ -14,12 +14,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+import PropTypes from 'prop-types';
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var SelectInput = React.createClass({
+var SelectInput = createReactClass({
   propTypes: {
-    title: React.PropTypes.string.isRequired
+    title: PropTypes.string.isRequired
   },
   componentDidMount: function() {
     // $('.panel-body-container').height();
@@ -43,4 +45,4 @@ var SelectInput = React.createClass({
 });
 
 
-module.exports = SelectInput;
+export {SelectInput as default}

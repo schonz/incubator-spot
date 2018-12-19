@@ -24,11 +24,11 @@ const ID_REPLACE_REGEX = new RegExp(`[${ID_REPLACE}]`, 'g');
 const ID_REPLACEMENT = '_';
 const ID_REPLACEMENT_REGEX = new RegExp(`[${ID_REPLACEMENT}]`, 'g');
 
-var SpotUtils = {
-  IP_V4_REGEX: /^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/,
-  CSS_RISK_CLASSES: {'3': 'danger', '2': 'warning', '1': 'info', '0': 'default', '-1': 'default'},
-  getCurrentDate: function (name)
-  {
+class SpotUtils {
+  //IP_V4_REGEX: /^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/,
+  //CSS_RISK_CLASSES: {'3': 'danger', '2': 'warning', '1': 'info', '0': 'default', '-1': 'default'},
+  
+  static getCurrentDate(name) {
     // Look for a date on location's hash, default to today
     var date;
 
@@ -42,18 +42,18 @@ var SpotUtils = {
     {
         return SpotUtils.getDateString(new Date());
     }
-  },
-  getDateString: function (date)
-  {
+  }
+
+  static getDateString(date){
         return date.toISOString().substr(0, 10);
-  },
-  getCurrentFilter: function ()
-  {
+  }
+
+  static getCurrentFilter() {
     // Look for a date on location's hash, default to today
     return SpotUtils.getUrlParam('filter');
-  },
-  getUrlParam: function (name, defaultValue)
-  {
+  }
+
+  static getUrlParam(name, defaultValue) {
     // Look for a date on location's hash, default to today
     var matches;
 
@@ -66,8 +66,9 @@ var SpotUtils = {
 
     // Filter is not present
     return defaultValue || null;
-  },
-  setUrlParam: function (name, value) {
+  }
+
+  static setUrlParam(name, value) {
     var regex, hash, replacement, matches;
 
     regex = new RegExp('((?:#|\\|)' + name + '=)[^|]+');
@@ -85,9 +86,9 @@ var SpotUtils = {
     }
 
     window.location.hash = hash;
-  },
+  }
 
-  parseReputation: function (rawReps) {
+  static parseReputation(rawReps) {
     var reps;
 
     if (!rawReps) return [];
@@ -116,8 +117,9 @@ var SpotUtils = {
     });
 
     return reps;
-  },
-  getHighestReputation: function (reps) {
+  }
+
+  static getHighestReputation(reps) {
     if (!reps) return -1;
 
     reps = typeof reps == 'string' ? SpotUtils.parseReputation(reps) : reps;
@@ -125,14 +127,17 @@ var SpotUtils = {
     return Object.keys(reps).reduce(function (hr, serviceName) {
       return Math.max(hr, reps[serviceName].value);
     }, -1);
-  },
-  encodeId(id) {
+  }
+
+  static encodeId(id) {
       return Base64.encode(id).replace(ID_REPLACE_REGEX, ID_REPLACEMENT);
-  },
-  decodeId(id) {
+  }
+  
+  static decodeId(id) {
       return Base64.decode(id.replace(ID_REPLACEMENT_REGEX, ID_REPLACE));
-  },
-  filterTextOnSelect(selectionEl, str, isCaseSensitive) {
+  }
+
+  static filterTextOnSelect(selectionEl, str, isCaseSensitive) {
     if (isCaseSensitive)
     str = str.toLowerCase();
     // cache the jQuery object of the <select> element
@@ -151,8 +156,9 @@ var SpotUtils = {
       return text.match(str);
     });
     $el.empty().append(newOptions);
-  },
-  switchDivs(elOne, elTwo) {
+  }
+
+  static switchDivs(elOne, elTwo) {
     let elOneVal = $(`#${elOne}`).attr('style').split(';')[0].split(' ')[1] || '';
     let elTwoVal = $(`#${elTwo}`).attr('style').split(';')[0].split(' ')[1] || '';
 
@@ -167,7 +173,6 @@ var SpotUtils = {
       $(`#${elTwo}`).css({'order': '2'});
     }
   }
-};
+}
 
-//module.exports = SpotUtils;
-export { SpotUtils };
+export { SpotUtils as default}

@@ -16,8 +16,10 @@
 //
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var SearchGlobalInput = React.createClass({
+
+var SearchGlobalInput = createReactClass({
     getInitialState: function() {
       return {filter: ''}
     },
@@ -46,4 +48,4 @@ var SearchGlobalInput = React.createClass({
 });
 
 
-module.exports = SearchGlobalInput;
+export {SearchGlobalInput as default}

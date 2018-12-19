@@ -15,14 +15,16 @@
 // limitations under the License.
 //
 
+import SpotUtils from '../utils/SpotUtils'
+
 var $ = require('jquery');
 
 var SpotDispatcher = require('../dispatchers/SpotDispatcher');
 var SpotConstants = require('../constants/SpotConstants');
-var SpotUtils = require('../utils/SpotUtils');
 
-var SpotActions = {
-    setDate: function (date, name) {
+
+class SpotActions {
+    static setDate(date, name) {
         var regex;
 
         name = name || 'date';
@@ -49,26 +51,30 @@ var SpotActions = {
             date: date,
             name: name
         });
-    },
-    setPipeline(pipeline) {
+    }
+
+    static setPipeline(pipeline) {
        SpotDispatcher.dispatch({
            actionType: SpotConstants.UPDATE_PIPELINE,
            pipeline
        });
-   },
-    expandPanel: function (panel) {
+    }
+
+    static expandPanel(panel) {
         SpotDispatcher.dispatch({
             actionType: SpotConstants.EXPAND_PANEL,
             panel: panel
         });
-    },
-    restorePanel: function (panel) {
+    }
+
+    static restorePanel(panel) {
         SpotDispatcher.dispatch({
             actionType: SpotConstants.RESTORE_PANEL,
             panel: panel
         });
-    },
-    toggleMode: function (panel, mode) {
+    }
+
+    static toggleMode(panel, mode) {
         SpotDispatcher.dispatch({
             actionType: SpotConstants.TOGGLE_MODE_PANEL,
             panel: panel,
@@ -77,4 +83,4 @@ var SpotActions = {
     }
 };
 
-module.exports = SpotActions;
+export {SpotActions as default}

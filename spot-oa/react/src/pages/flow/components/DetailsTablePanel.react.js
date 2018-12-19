@@ -16,11 +16,12 @@
 //
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 
 var GridPanelMixin = require('../../../components/GridPanelMixin.react');
 var DetailsStore = require('../stores/DetailsStore');
 
-var DetailsTablePanel = React.createClass({
+var DetailsTablePanel = createReactClass({
   mixins: [GridPanelMixin],
   emptySetMessage: 'Please select one row from Suspicious Connects',
   getDefaultProps: function () {
@@ -41,4 +42,4 @@ var DetailsTablePanel = React.createClass({
   }
 });
 
-module.exports = DetailsTablePanel;
+export {DetailsTablePanel as default}

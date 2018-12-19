@@ -15,13 +15,14 @@
 // limitations under the License.
 //
 
+import SpotActions from './SpotActions'
+
 var SpotDispatcher = require('../dispatchers/SpotDispatcher');
-var SpotActions = require('./SpotActions');
 var SpotConstants = require('../constants/SpotConstants');
 var SpotUtils = require('../utils/SpotUtils');
 
-var EdInActions = {
-  setFilter: function (filter)
+class EdInActions {
+  static setFilter(filter)
   {
     SpotUtils.setUrlParam('filter', filter);
 
@@ -29,67 +30,77 @@ var EdInActions = {
       actionType: SpotConstants.UPDATE_FILTER,
       filter: filter
     });
-  },
-  reloadSuspicious: function () {
+  }
+
+  static reloadSuspicious() {
     SpotActions.toggleMode(SpotConstants.DETAILS_PANEL, SpotConstants.DETAILS_MODE);
     SpotDispatcher.dispatch({
       actionType: SpotConstants.RELOAD_SUSPICIOUS
     });
-  },
-  reloadDetails: function () {
+  }
+
+  static reloadDetails() {
     SpotDispatcher.dispatch({
       actionType: SpotConstants.RELOAD_DETAILS
     });
-  },
-  reloadVisualDetails: function () {
+  }
+
+  static reloadVisualDetails() {
     SpotDispatcher.dispatch({
       actionType: SpotConstants.RELOAD_DETAILS_VISUAL
     });
-  },
-  highlightThreat: function (id)
+  }
+
+  static highlightThreat(id)
   {
     SpotDispatcher.dispatch({
       actionType: SpotConstants.HIGHLIGHT_THREAT,
       threat: id
     });
-  },
-  unhighlightThreat: function ()
+  }
+
+  static unhighlightThreat()
   {
     SpotDispatcher.dispatch({
       actionType: SpotConstants.UNHIGHLIGHT_THREAT
     });
-  },
-  selectThreat: function (threat)
+  }
+
+  static selectThreat(threat)
   {
     SpotDispatcher.dispatch({
       actionType: SpotConstants.SELECT_THREAT,
       threat: threat
     });
-  },
-  selectIp: function (ip)
+  }
+
+  static selectIp(ip)
   {
     SpotDispatcher.dispatch({
       actionType: SpotConstants.SELECT_IP,
       ip: ip
     });
-  },
-  saveScoring: function(scoredEmelents) {
+  }
+
+  static saveScoring(scoredEmelents) {
     SpotDispatcher.dispatch({
       actionType: SpotConstants.SAVE_SCORED_ELEMENTS,
       scoredElems: scoredEmelents
     });
-  },
-  resetScoring: function(date) {
+  }
+
+  static resetScoring(date) {
     SpotDispatcher.dispatch({
       actionType: SpotConstants.RESET_SCORED_ELEMENTS,
       date: date
     });
-  },
-  setClassWidth: function() {
+  }
+
+  static setClassWidth() {
     SpotDispatcher.dispatch({
       actionType: SpotConstants.CHANGE_CSS_CLS
     });
   }
 };
 
-module.exports = EdInActions;
+export {EdInActions as default}

@@ -16,8 +16,9 @@
 //
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var ButtonsScoring = React.createClass({
+var ButtonsScoring = createReactClass({
     getInitialState: function() {
       return {dataScored: []};
     },
@@ -45,4 +46,4 @@ var ButtonsScoring = React.createClass({
     }
 });
 
-module.exports = ButtonsScoring;
+export {ButtonsScoring as default}

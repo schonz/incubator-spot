@@ -15,10 +15,12 @@
 // limitations under the License.
 //
 
+import PropTypes from 'prop-types';
 import $ from 'jquery'
 import swal from 'sweetalert'
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 
 var SuspiciousStore = require('../stores/SuspiciousStore');
 var NotebookStore = require('../stores/NotebookStore');
@@ -32,11 +34,11 @@ var SearchGlobalInput = require('../../../components/scoring/SearchGlobalInput.r
 
 var SpotUtils = require('../../../utils/SpotUtils');
 
-var ScoreNotebook = React.createClass({
+var ScoreNotebook = createReactClass({
   // mixins: [GridPanelMixin],
   emptySetMessage: 'There is no data available for selected date.',
   propTypes: {
-    date: React.PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
   },
   getInitialState: function () {
     return {
@@ -221,4 +223,4 @@ var ScoreNotebook = React.createClass({
 });
 
 
-module.exports = ScoreNotebook;
+export {ScoreNotebook as default}
