@@ -20,6 +20,11 @@ import SpotUtils from '../../utils/SpotUtils'
 import SpotActions from '../../actions/SpotActions'
 import EdInActions from '../../actions/EdInActions'
 
+import PanelRow from '../../components/PanelRow.react'
+import Panel from '../../components/Panel.react'
+import SuspiciousPanel from './components/SuspiciousPanel.react'
+import NetworkViewPanel from './components/NetworkViewPanel.react'
+
 const React = require('react');
 const ReactDOM = require('react-dom');
 
@@ -30,11 +35,34 @@ const FilterInput = require('./components/FilterInput.react');
 const DateInput = require('../../components/DateInput.react');
 const MainMenu = require('../../menu/components/MainMenu.react');
 
+// Build and Render Edge Investigation's panels
+//const PanelRow = require('../../components/PanelRow.react');
+//const Panel = require('../../components/Panel.react');
+
+//const SuspiciousPanel = require('./components/SuspiciousPanel.react');
+//const NetworkViewPanel = require('./components/NetworkViewPanel.react');
+const ScoreNotebook = require('./components/ScoreNotebook.react');
+const DetailsPanel = require('./components/DetailsPanel.react');
+
 export default class SuspiciousPage extends React.Component {
   render(){
-    return <h1>Suspicious Connects Here</h1>
+    return (
+      <div id="spot-content">
+        <PanelRow>
+          <Panel title={SpotConstants.SUSPICIOUS_PANEL} expandable reloadable onReload={EdInActions.reloadSuspicious}>
+            <SuspiciousPanel />
+          </Panel>
+          <Panel title={SpotConstants.NETVIEW_PANEL} container expandable reloadable onReload={EdInActions.reloadSuspicious}>
+           
+          </Panel>
+        </PanelRow>
+      </div>
+    );
   }
 }
+
+//
+//<NetworkViewPanel />
 
 function resetFilterAndReload()
 {
@@ -80,15 +108,6 @@ function switchComponents () {
   ),
   document.getElementById('nav_form')
 );*/
-
-// Build and Render Edge Investigation's panels
-const PanelRow = require('../../components/PanelRow.react');
-const Panel = require('../../components/Panel.react');
-
-const SuspiciousPanel = require('./components/SuspiciousPanel.react');
-const NetworkViewPanel = require('./components/NetworkViewPanel.react');
-const ScoreNotebook = require('./components/ScoreNotebook.react');
-const DetailsPanel = require('./components/DetailsPanel.react');
 
 /*ReactDOM.render(
   <div id="spot-content">

@@ -24,15 +24,17 @@ var SpotActions = require('../actions/SpotActions');
 var EdInActions = require('../actions/EdInActions');
 var SpotConstants = require('../constants/SpotConstants');
 
-var SuspiciousGridMixin = {
-    emptySetMessage: 'There is no data available for selected date',
-    getInitialState: function () {
+class SuspiciousGridMixin {
+    //emptySetMessage: 'There is no data available for selected date',
+    static getInitialState() {
         return this.store.getData();
-    },
-    componentDidMount: function () {
+    }
+
+    static componentDidMount() {
         this.store.addChangeDataListener(this._onChange);
-    },
-    componentDidUpdate: function () {
+    }
+
+    static componentDidUpdate() {
         if (this.state.loading || !this.state.data || this.state.data.length===0) return;
 
         $(ReactDOM.findDOMNode(this)).popover({
@@ -40,11 +42,13 @@ var SuspiciousGridMixin = {
             html: true,
             selector: '[data-toggle="popover"]'
         });
-    },
-    componentWillUnmount: function () {
+    }
+
+    static componentWillUnmount() {
         this.store.removeChangeDataListener(this._onChange);
-    },
-    _renderRepCell: function (keyPrefix, reps) {
+    }
+
+    static _renderRepCell(keyPrefix, reps) {
         var keys, services, tooltipContent;
 
         keys = Object.keys(reps);
@@ -70,29 +74,33 @@ var SuspiciousGridMixin = {
                   data-placement="right" data-content={tooltipContent}>
             </span>
         );
-    },
+    }
+
     // Event Hanlders
-    _onChange: function () {
+    static _onChange() {
         var state;
 
         state = this.store.getData();
 
         this.replaceState(state);
-    },
-    _onClickRow: function (item) {
+    }
+
+    static _onClickRow(item) {
         this.selectItems(item);
 
         // Select elements on Network and Details view
         EdInActions.selectThreat(item);
         EdInActions.reloadDetails();
         SpotActions.toggleMode(SpotConstants.DETAILS_PANEL, SpotConstants.DETAILS_MODE);
-    },
-    _onMouseEnterRow: function (item) {
+    }
+
+    static _onMouseEnterRow(item) {
         EdInActions.highlightThreat(item);
-    },
-    _onMouseLeaveRow: function (item) {
+    }
+
+    static _onMouseLeaveRow(item) {
         EdInActions.unhighlightThreat(item);
     }
 };
 
-module.exports = SuspiciousGridMixin;
+export {SuspiciousGridMixin as default}

@@ -170,4 +170,4 @@ const NetworkViewPanel = createReactClass({
     }
 });
 
-export { NetworkViewPanel };
+export { NetworkViewPanel as default};
