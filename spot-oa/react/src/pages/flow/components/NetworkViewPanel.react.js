@@ -15,13 +15,15 @@
 // limitations under the License.
 //
 
+import PolloNetworkView from '../../../components/PolloNetworkView.react'
+//const PolloNetworkViewMixin = require('../../../components/PolloNetworkViewMixin.react');
+
 const d3 = require('d3');
 
 const React = require('react');
 
 const ContentLoaderMixin = require('../../../components/ContentLoaderMixin.react');
 const ChartMixin = require('../../../components/ChartMixin.react');
-const PolloNetworkViewMixin = require('../../../components/PolloNetworkViewMixin.react');
 
 const SpotActions = require('../../../actions/SpotActions');
 const EdInActions = require('../../../actions/EdInActions');
@@ -114,20 +116,23 @@ function getStateFromData({data}) {
     };
 }
 
-const NetworkViewPanel = createReactClass({
-    mixins: [ContentLoaderMixin, ChartMixin, PolloNetworkViewMixin],
-    componentDidMount() {
+class NetworkViewPanel extends PolloNetworkView{
+    //static mixins() {return [ContentLoaderMixin, ChartMixin, PolloNetworkViewMixin]}
+
+    static componentDidMount() {
       SuspiciousStore.addChangeDataListener(this._onChange);
       SuspiciousStore.addThreatHighlightListener(this._onHighlight);
       SuspiciousStore.addThreatUnhighlightListener(this._onUnhighlight);
       SuspiciousStore.addThreatSelectListener(this._onSelect);
-    },
+    }
+
     componentWillUmount() {
       SuspiciousStore.removeChangeDataListener(this._onChange);
       SuspiciousStore.removeThreatHighlightListener(this._onHighlight);
       SuspiciousStore.removeThreatUnhighlightListener(this._onUnhighlight);
       SuspiciousStore.removeThreatSelectListener(this._onSelect);
-    },
+    }
+
     // render is inherited from Mixins
     _onChange() {
         const data = SuspiciousStore.getData();
@@ -139,28 +144,33 @@ const NetworkViewPanel = createReactClass({
         }
 
         this.replaceState(state);
-    },
+    }
+
     _onHighlight() {
         const threat = SuspiciousStore.getHighlightedThreat();
 
         this.highlightNodes([createNodeId(threat.srcIP), createNodeId(threat.dstIP)]);
         this.highlightEdge(createLinkId(threat.srcIP, threat.dstIP));
-    },
+    }
+
     _onUnhighlight() {
         this.unhighlight();
-    },
+    }
+
     _onSelect() {
         const threat = SuspiciousStore.getSelectedThreat();
 
         this.selectNodes([createNodeId(threat.srcIP), createNodeId(threat.dstIP)]);
         this.selectEdge(createLinkId(threat.srcIP, threat.dstIP));
-    },
+    }
+
     _onClick(id) {
         const ip = getIpFromNodeId(id);
         EdInActions.selectIp(ip);
         SpotActions.toggleMode(SpotConstants.DETAILS_PANEL, SpotConstants.VISUAL_DETAILS_MODE);
         EdInActions.reloadVisualDetails();
-    },
+    }
+
     _onContextualClick(id) {
       d3.event.preventDefault();
 
@@ -168,6 +178,6 @@ const NetworkViewPanel = createReactClass({
       EdInActions.setFilter(ip);
       EdInActions.reloadSuspicious();
     }
-});
+}
 
 export { NetworkViewPanel as default};
