@@ -53,16 +53,13 @@ export default class SuspiciousPage extends React.Component {
             <SuspiciousPanel />
           </Panel>
           <Panel title={SpotConstants.NETVIEW_PANEL} container expandable reloadable onReload={EdInActions.reloadSuspicious}>
-           
+            <NetworkViewPanel />
           </Panel>
         </PanelRow>
       </div>
     );
   }
 }
-
-//
-//<NetworkViewPanel />
 
 function resetFilterAndReload()
 {

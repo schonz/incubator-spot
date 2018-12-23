@@ -126,7 +126,7 @@ class NetworkViewPanel extends PolloNetworkView{
       SuspiciousStore.addThreatSelectListener(this._onSelect);
     }
 
-    componentWillUmount() {
+    static componentWillUmount() {
       SuspiciousStore.removeChangeDataListener(this._onChange);
       SuspiciousStore.removeThreatHighlightListener(this._onHighlight);
       SuspiciousStore.removeThreatUnhighlightListener(this._onUnhighlight);

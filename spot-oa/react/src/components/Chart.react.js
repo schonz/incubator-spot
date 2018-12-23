@@ -24,6 +24,7 @@ var PropTypes = require('prop-types')
 
 class Chart extends ContentLoader {
     className: string
+    
     getDefaultProps() {
         return {
             className: 'spot-chart'
