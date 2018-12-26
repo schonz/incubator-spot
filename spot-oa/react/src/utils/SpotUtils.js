@@ -25,8 +25,8 @@ const ID_REPLACEMENT = '_';
 const ID_REPLACEMENT_REGEX = new RegExp(`[${ID_REPLACEMENT}]`, 'g');
 
 class SpotUtils {
-  static IP_V4_REGEX(){ return /^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/}
-  static CSS_RISK_CLASSES() { return {'3': 'danger', '2': 'warning', '1': 'info', '0': 'default', '-1': 'default'}}
+  static IP_V4_REGEX = /^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/
+  static CSS_RISK_CLASSES = {'3': 'danger', '2': 'warning', '1': 'info', '0': 'default', '-1': 'default'}
   
   static getCurrentDate(name) {
     // Look for a date on location's hash, default to today
