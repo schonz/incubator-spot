@@ -2,12 +2,14 @@
 import graphene
 from flask import Flask
 from flask_graphql import GraphQLView
+from flask_cors import CORS, cross_origin
 # local imports
 from schema import schemaOA
 
 
 # Flask configs
 app = Flask(__name__)
+cors = CORS(app)
 app.debug = True
 
 # This is to enable the GraphQL GUI
